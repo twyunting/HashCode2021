@@ -2,6 +2,7 @@ class intersection():
 	def __init__(self,startNum):
 		self.startNum=startNum
 		self.roadList={}
+		self.waitingList=[]
 	def addRoad(self,roadName,nextInter,length):
 		self.roadList[roadName]={"nextInter":nextInter,"length":length}
 	def getRoadInfo(self, roadName):
@@ -9,6 +10,9 @@ class intersection():
 			return self.roadList[roadName]
 		except:
 			return None
+	def addWaitingList(self, carObj):
+		self.waitingList.append(carObj)
+
 
 class car():
 	def __init__(self,startRoadName,roadDict,travelList):
@@ -18,11 +22,21 @@ class car():
 		for i in travelList:
 			totalDist+=roadDict[i]["length"]
 		self.travelDist=totalDist
-		print(self.travelDist)
+		self.available=False
+
 
 def readFile(filePath):
 	with open(filePath, "r") as f:
 		return f.readlines()
+
+def addWaitingList():
+	for i in carObjList:
+		interObjList[i.start].addWaitingList(i)
+
+def findAvailableCar():
+	for i in carObjList:
+		if simSecs>=i.travelDist:
+			i.available=True
 
 
 def interpreter(totalTxt):
@@ -61,11 +75,19 @@ def interpreter(totalTxt):
 		if idx>roadQuan:
 			strList=line.split()
 			obj=car(strList[1],roadDict,strList[:1:-1][::-1])
+			carObjList.append(obj)
+	addWaitingList()
+	findAvailableCar()
 
 
 
 totalTxt=readFile('a.txt')
 interpreter(totalTxt)
+
+
+
+print(interObjList[0].waitingList[0])
+
 
 """
 global simSecs
@@ -73,4 +95,3 @@ global interObjList
 global carObjList
 global roadDict
 """
-
