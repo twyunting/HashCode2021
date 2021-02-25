@@ -1,0 +1,11 @@
+---
+title: "HashCode"
+author: "Yunting Chiu"
+date: "2/24/2021"
+output: pdf_document
+---
+
+```{r}
+
+```
+
