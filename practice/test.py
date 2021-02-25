@@ -18,13 +18,13 @@ def txtToList(totalTxt):
 	pizzaList=[]
 	for idx, line in enumerate(totalTxt):
 		if idx==0:
-			strList=line.split()
+			strList=line.split(" ")
 			totalPizza=int(strList[0])
 			duoTeamQuan=int(strList[1])
 			triTeamQuan=int(strList[2])
 			squTeamQuan=int(strList[3])
 		else:
-			strList=line.split()
+			strList=line.split(" ")
 			pizzaList.append((idx-1,int(strList.pop(0)),strList))
 def duoTeamDeliver(duoTeamQuan):
 	#add two pizza

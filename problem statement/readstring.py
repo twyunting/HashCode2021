@@ -3,20 +3,22 @@ def readFile(filePath):
 		return f.readlines()
 
 
-texts = readFile("b.txt")
-
-
+texts = readFile("b.txt") #read the txt file
 first = []
-simulationSeconds = []
-intersections = []
-streets = []
-cars = [] 
-points = []
 
 def firstLine(texts):
-  first.append(texts[0])
+	global simulationSeconds
+	global intersections
+	global streets
+	global cars
+	global points
+	strList = " ".join(first).split()
+	simulationSeconds = int(strList[0])
+	intersections = int(strList[1])
+	streets = int(strList[2])
+	cars = int(strList[3])
+	points = int(strList[4])
 
-  return first
-
-
-print(firstLine(texts))
+texts = readFile("b.txt") #read the txt file
+firstLine(texts)
+print(cars)
