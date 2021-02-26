@@ -12,6 +12,7 @@ def firstLine(texts):
 	global streets
 	global cars
 	global points
+	for idx, line in 
 	strList = " ".join(first).split()
 	simulationSeconds = int(strList[0])
 	intersections = int(strList[1])
@@ -21,4 +22,4 @@ def firstLine(texts):
 
 texts = readFile("b.txt") #read the txt file
 firstLine(texts)
-print(cars)
+print(texts)
